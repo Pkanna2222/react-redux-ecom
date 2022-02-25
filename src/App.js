@@ -9,30 +9,28 @@ export default function App() {
   const products = useSelector((state) => state.products);
   //const [allProducts, setAllProducts] = useState(null);
 
-  const fetchProducts = () => {
-    const allItems = axios
+  const fetchProducts = async () => {
+    const allproducts = await axios
       .get('https://fakestoreapi.com/products')
       .then((res) => {
         return res.data;
       })
       .catch((err) => console.log('err', err));
 
-    dispatch(setProducts(allItems));
+    dispatch(setProducts(allproducts));
   };
 
   useEffect(() => {
     fetchProducts();
   }, []);
-
+  console.log(products);
   return (
     <div>
       <h1>Hello StackBlitz!</h1>
       <p>Start editing to see some magic happen :)</p>
-      {
-        products.map(item => (
-          <div>{item.id}</div>
-        ))
-      }
+      {products.map((item) => {
+        return <div>{item.id}</div>;
+      })}
     </div>
   );
 }

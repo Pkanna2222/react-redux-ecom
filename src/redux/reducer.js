@@ -1,6 +1,6 @@
 import { actionTypes } from './actionTypes.js';
 
-const initialState = {};
+const initialState = [];
 
 export const productReducer = (state = initialState, action) => {
   switch (action.type) {
